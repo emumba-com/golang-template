@@ -1,0 +1,67 @@
+linters-settings:
+  lll:
+    line-length: 200
+  funlen:
+    lines: 70
+    statements: 60
+  dupl:
+    threshold: 200
+  cyclop:
+    max-complexity: 10
+  nestif:
+    min-complexity: 10
+  dogsled:
+    max-blank-identifiers: 4
+
+linters:
+  disable-all: true
+  enable:
+    - deadcode
+    - errcheck
+    - gosimple
+    - govet
+    - ineffassign
+    - staticcheck
+    - structcheck
+    - typecheck
+    - unused
+    - varcheck
+    - bodyclose
+    - cyclop
+    - dogsled
+    - dupl
+    - errorlint
+    - funlen
+    - goconst
+    - gocyclo
+    - godot
+    - godox
+    - ifshort
+    - lll
+    - misspell
+    - nestif
+    - nlreturn
+    - unconvert
+    - unparam
+    - whitespace
+    - wsl
+
+issues:
+  fix: true
+  exclude-rules:
+    - path: _test\.go # disable some linters for test files
+      linters:
+        - gocyclo
+        - gosec
+        - dupl
+        - funlen
+    - linters:
+        - stylecheck
+      text: "error strings should not be capitalized"
+
+  max-issues-per-linter: 0
+  max-same-issues: 0
+
+run:
+  issues-exit-code: 1
+  tests: false

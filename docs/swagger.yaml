@@ -1,0 +1,87 @@
+definitions:
+  models.Response:
+    properties:
+      data:
+        type: object
+      errors:
+        type: string
+      status:
+        type: string
+    type: object
+  models.Users:
+    properties:
+      email:
+        example: john.doe@email.com
+        type: string
+      firstName:
+        example: John
+        type: string
+      lastName:
+        example: Doe
+        type: string
+      userID:
+        example: b251379e-01a1-11ec-82d6-a312e0239c7b
+        type: string
+    type: object
+info:
+  contact: {}
+  license: {}
+paths:
+  /health/:
+    get:
+      description: Get health of the server which tell either server is up or down
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ""
+        "400":
+          description: ""
+        "500":
+          description: ""
+      summary: Get Health
+      tags:
+      - health
+  /users/:
+    post:
+      description: Create a new user
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Users'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.Response'
+      summary: Create User
+      tags:
+      - users
+  /users/{id}/:
+    get:
+      description: Get user by user id
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Users'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.Response'
+      summary: Get user by id
+      tags:
+      - users
+swagger: "2.0"
